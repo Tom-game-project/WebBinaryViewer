@@ -1,0 +1,8 @@
+#dropArea {
+    width: 300px;
+    height: 150px;
+    background-color: lightgray;
+    padding: 20px;
+    border: 2px dashed gray;
+    transition: background-color 0.3s ease; /* 背景色の変化をアニメーション化 */
+}
