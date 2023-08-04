@@ -33,7 +33,8 @@ function handleFile(file) {
     // 例：ファイルの内容をコンソールに出力する
     const reader = new FileReader();
     reader.onload = (e) => {
-        console.log(e.target.result);
+        let result=e.target.result;
+        console.log(result);
     };
     reader.readAsText(file); // テキストファイルの内容を取得
 }
