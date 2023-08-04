@@ -10,7 +10,7 @@ let random_array = new Uint8Array([...Array(1000)].map((_)=>randint(0,255)))
 
 function convertToHexWithZeroPadding(arr,base) {
     // 配列内の数値を16進数に変換して新しい配列を作成
-    return [...arr].map((num) => num.toString(base).padStart(2, '0'));
+    return [...arr].map((num) => num.toString(base).padStart(2, '0').toUpperCase());
 }
 
 function insert_text(text) {
@@ -22,10 +22,10 @@ function insert_text(text) {
 }
 
 function create_header(base){
-    let arr =[...Array(base)].map((_, i) => i).map((num) => num.toString(base));
+    let arr = [...Array(base)].map((_, i) => i).map((num) => num.toString(base).padStart(2, "0").toUpperCase());
     arr = ["address",...arr]
     let row = document.createElement("tr");
-
+    row.setAttribute("class","tableheader");
     for (const i of arr) {
         const elem = document.createElement("th");
         elem.textContent = i;
@@ -39,8 +39,12 @@ function create_header(base){
 
 function insert_row(base,count,arr) {
     let row = document.createElement("tr");
-    let binary = document.getElementById("binary")
-    for (const i of [count.toString(base).padStart(8,"0"),...arr]){
+    let binary = document.getElementById("binary");
+    const backnumber = document.createElement("th");
+    backnumber.textContent = count.toString(base).padStart(8, "0").toUpperCase();
+    backnumber.setAttribute("class","bn");
+    row.appendChild(backnumber);
+    for (const i of arr){
         const elem = document.createElement("td");
         elem.textContent=i;
         elem.setAttribute('class', "bd");

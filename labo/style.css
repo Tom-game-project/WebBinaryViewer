@@ -2,3 +2,17 @@ body{
     background-color: white;
 }
 
+table{
+    border-spacing: 0px;
+}
+.bd {
+    width: 50px;
+    text-align: center;
+}
+
+.tableheader{
+    background-color: lightgray;
+}
+.bn{
+    background-color: lightgray;
+}
