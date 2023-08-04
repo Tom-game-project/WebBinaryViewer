@@ -1,3 +1,5 @@
+import init,{is_png} from "./WebBinaryViewer_bg.js";
+init()
 const dropArea = document.getElementById('dropArea');
 
 // ドラッグイベントのデフォルト動作を抑制する
@@ -33,8 +35,10 @@ function handleFile(file) {
     // 例：ファイルの内容をコンソールに出力する
     const reader = new FileReader();
     reader.onload = (e) => {
-        let result=e.target.result;
-        console.log(result);
+        let arrayBuffer = e.target.result;
+        console.log(arrayBuffer)
+        let Array_u8 = new Uint8Array(arrayBuffer); 
+        console.log(is_png(Array_u8));
     };
-    reader.readAsText(file); // テキストファイルの内容を取得
+    reader.readAsArrayBuffer(file);
 }
