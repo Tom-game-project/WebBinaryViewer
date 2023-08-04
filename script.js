@@ -71,5 +71,6 @@ function onload(e) {
     console.log(arrayBuffer.slice(0, 10)) //先頭10のみ表示
     let Array_u8 = new Uint8Array(arrayBuffer);
     console.log(is_png(Array_u8));
+    create_table(Array_u8);
 
 }

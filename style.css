@@ -6,3 +6,19 @@
     border: 2px dashed gray;
     transition: background-color 0.3s ease; /* 背景色の変化をアニメーション化 */
 }
+table {
+    border-spacing: 0px;
+}
+
+.bd {
+    width: 50px;
+    text-align: center;
+}
+
+.tableheader {
+    background-color: lightgray;
+}
+
+.bn {
+    background-color: lightgray;
+}
