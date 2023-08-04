@@ -1,5 +1,8 @@
 import init,{is_png} from "./WebBinaryViewer_bg.js";
 init()
+
+
+
 const dropArea = document.getElementById('dropArea');
 
 // ドラッグイベントのデフォルト動作を抑制する
@@ -30,15 +33,43 @@ dropArea.addEventListener('drop', (e) => {
     }
 });
 
-function handleFile(file) {
+function handleFile(selectedFile) {
     // ファイルの内容を取得したり、ファイルをアップロードしたりする処理をここに記述する
     // 例：ファイルの内容をコンソールに出力する
     const reader = new FileReader();
-    reader.onload = (e) => {
-        let arrayBuffer = e.target.result;
-        console.log(arrayBuffer)
-        let Array_u8 = new Uint8Array(arrayBuffer); 
-        console.log(is_png(Array_u8));
-    };
-    reader.readAsArrayBuffer(file);
+    reader.onload = onload;
+    reader.readAsArrayBuffer(selectedFile);
+}
+
+
+const Fileopendialog = document.getElementById("Fileopendialog");
+Fileopendialog.addEventListener("click",()=>{
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+
+    // 選択されたファイルが変更されたときのイベントリスナーを設定
+    fileInput.addEventListener('change', (e) => {
+        const selectedFile = e.target.files[0];
+
+        // FileReaderオブジェクトを使用してファイルのバイナリデータを読み込む
+        const reader = new FileReader();
+
+        reader.onload=onload;
+
+        // ファイルをバイナリデータとして読み込む
+        reader.readAsArrayBuffer(selectedFile);
+    });
+
+    // ファイル選択ダイアログを開く
+    fileInput.click();
+})
+
+
+
+function onload(e) {
+    let arrayBuffer = e.target.result;
+    console.log(arrayBuffer.slice(0, 10)) //先頭10のみ表示
+    let Array_u8 = new Uint8Array(arrayBuffer);
+    console.log(is_png(Array_u8));
+
 }
