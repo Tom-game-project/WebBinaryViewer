@@ -3,7 +3,7 @@ function randint(min, max) {
     // min（含む）から max（含む）までの整数をランダムに生成
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-let random_array = new Uint8Array([...Array(1000)].map((_)=>randint(0,255)))
+
 
 
 //====================実用====================
@@ -58,6 +58,8 @@ function insert_row(base,count,arr) {
 const chunked = (arr, len) => [...Array(Math.ceil(arr.length / len))].map((_, i) => arr.slice(i * len, (i + 1) * len));
 
 function create_table(){
+    clear_table()
+    let random_array = new Uint8Array([...Array(1000)].map((_) => randint(0, 255)))
     let base = 16
     create_header(base);
     let count = 0;
@@ -67,4 +69,13 @@ function create_table(){
     }
 }
 
-create_table()
+function clear_table(){
+    const binaryparents = document.getElementById("binary");
+    //削除
+    while (binaryparents.firstChild) {
+        binaryparents.removeChild(binaryparents.firstChild);
+    }
+}
+
+let drawtable = document.getElementById("drawtable");
+drawtable.addEventListener("click", create_table)
