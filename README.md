@@ -4,7 +4,8 @@
 
 👆のリンクから使えます！！
 
-![WebBinaryViewer_image](image.png)
+![WebBinaryViewer_image](/assets/image.png)
+
 ## ブラウザ上でバイナリデータを閲覧するためのツール
 
 - ブラウザ上で完結する為、アプリケーションのインストールの必要はありません。
